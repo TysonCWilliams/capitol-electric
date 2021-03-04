@@ -24,7 +24,7 @@
           width="100"
         />
       </div>
-
+      <v-btn @click="toggleTheme" text rounded>Toggle Theme</v-btn>
       <v-spacer></v-spacer>
 
       <v-btn
@@ -38,42 +38,29 @@
     </v-app-bar>
 
     <v-main>
-      <HelloWorld/>
+      <Home/>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import Home from './components/Home';
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    Home,
   },
 
+  methods: {
+    toggleTheme(){
+      this.$vuetify.theme.themes.dark.anchor = '#616161'
+      this.$vuetify.theme.dark = !this.$vuetify.theme.dark
+    }
+  },
   data: () => ({
-        messages: [
-        {
-          from: 'You',
-          message: `Sure, I'll see you later.`,
-          time: '10:42am',
-          color: 'deep-purple lighten-1',
-        },
-        {
-          from: 'John Doe',
-          message: 'Yeah, sure. Does 1:00pm work?',
-          time: '10:37am',
-          color: 'green',
-        },
-        {
-          from: 'You',
-          message: 'Did you still want to grab lunch today?',
-          time: '9:47am',
-          color: 'deep-purple lighten-1',
-        },
-      ],
+    
   }),
 };
 </script>
